@@ -1,0 +1,58 @@
+<h2>{{ title }}</h2>
+
+<!-- String interpolation --> 
+<img src="{{ imageURL }}"/>
+
+<!-- Property Binding -->
+<img [src]="imageURL"/>
+
+<!-- Attribute Binding -->
+<h3 [textContent]="'This is another header'"></h3>
+
+<!-- ngFor -->
+<ul>
+  <li *ngFor="let course of courses">
+    {{ course }}
+  </li>
+</ul>
+
+<!-- Class Binding -->
+<button class="btn btn-primary" [class.active]="isActive">Save</button>
+<br/>
+
+<!-- Style Binding -->
+<button class="btn btn-primary" [style.backgroundColor]="isActive ? 'green' : 'white'">Save</button>
+<br/>
+
+<!-- Event Binding and Event Bubbling (Stop Propagation) -->
+<div (click)="noClick()">
+  <button (click)="onSave($event)">Save</button>
+</div>
+
+<!-- Event Filtering -->
+<input (keyup)="unfilteredKeyUp($event)"/> <!-- (NO FILTER) -->
+<input (keyup.enter)="filteredKeyUp()"/> <!-- (FILTERED) -->
+
+<!-- Template Variable -->
+<input (keyup.enter)="onKeyUp($event)"/><!-- The hard way -->
+<input #myInput (keyup.enter)="onKeyUp2(myInput.value)"/> <!-- The easy way (with template variable) -->
+
+<!-- Two-Way Binding -->
+<!-- Because Template Variables = passing paramters around = Procedural Programming = Not Object Oriented Programming -->
+<!-- Objects should always encapsulate data and behavior without having to always pass parameters around -->
+<input [value]="storedValue" (keyup.enter)="onKeyUp3()"/> <!-- Property Bidngin only works one-way from component to the view -->
+<input [value]="storedValue2" (keyup.enter)="storedValue2 = $event.target.value; onKeyUp4()"/> <!-- The OK 2-way binding -->
+<input [(ngModel)]="storedValue3" (keyup.enter)=" onKeyUp5()"/> <!-- The BEST 2-way binding -->
+
+<!-- Pipes -->
+<!-- Used to format data (Built-in: uppercase, lowercase, decimal, currency, percent) -->
+<ul>
+  <li>{{ course1.title | uppercase | lowercase }}</li>
+  <li>{{ course1.students | number }} Students</li>
+  <li>{{ course1.rating | number:'1.2-2' }}</li> <!-- [# of integer digits].[min & max # of digits after decimal]-->
+  <li>{{ course1.price | currency:'VND':true:'1.2-2' }}</li> <!-- Currency Type[string]:Display symbol[boolean] -->
+  <li>{{ course1.releaseDate | date:short }}</li>
+</ul>
+
+<!-- Custom Pipes -->
+<p>{{ text | summary:5 }}</p>

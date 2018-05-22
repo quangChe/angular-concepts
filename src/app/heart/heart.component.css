@@ -1,0 +1,20 @@
+* {
+  font-size: 50px;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+p {
+  display: inline;
+  margin-left: 10px;
+}
+
+.clicked {
+  color: deeppink;
+}
+
+.not-clicked {
+  color: #ccc;
+}
