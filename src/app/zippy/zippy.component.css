@@ -1,0 +1,39 @@
+#zippy-header {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 30px 50px;
+  width: 90%;
+  margin: 5px auto 0 auto;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  cursor: pointer;
+}
+
+#zippy-body {
+  border: 1px solid #ddd;
+  border-top: none;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  padding: 30px 50px;
+  width: 90%;
+  margin: 0 auto;  
+}
+
+.z-title {
+  font-weight: 700;
+  font-size: 24px;
+  padding: 0;
+  align-self: center;
+}
+
+.z-icon {
+  align-self: center;  
+  justify-self: end;
+}
+
+#zippy-header.expanded {
+  background: #f0f0f0;
+  border-bottom: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
