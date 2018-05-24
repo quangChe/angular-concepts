@@ -15,6 +15,7 @@ import { HeartComponent } from './heart/heart.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { TestFormComponent } from './test-form/test-form.component';
 
 @NgModule({
   // Where we add all the components that're part of the module
@@ -29,7 +30,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     HeartComponent,
     InputFormatDirective,
     ZippyComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    TestFormComponent
   ],
   imports: [
     BrowserModule,
