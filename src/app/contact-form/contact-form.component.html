@@ -1,0 +1,89 @@
+<form #demoForm="ngForm" (ngSubmit)="submit(demoForm)">
+
+  <!-- Model Group (Groups up ngModels) -- TEXT INPUT -->
+  <div ngModelGroup="contact" #contact="ngModelGroup" (change)="inspectGroup(contact)">
+    <div *ngIf=""></div>
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <!-- 'name' attribute and template variable reference are essential when using standalone ngModel 
+          in order to add an instance of the form control class to this input: -->
+        <input 
+          required 
+          ngModel 
+          minlength="3" 
+          maxlength="15" 
+          pattern="Quang"  
+          #firstName="ngModel" 
+          (change)="inspectThis(firstName)" 
+          name="firstName" 
+          id="firstName" 
+          type="text" 
+          class="form-control"/>
+        <div 
+          class="alert alert-danger" 
+          *ngIf="firstName.touched && !firstName.valid">
+          <div *ngIf="firstName.errors.required">
+            First name is required!
+          </div>
+          <div *ngIf="firstName.errors.minlength">
+            First name cannot shorter than {{ firstName.errors.minlength.requiredLength }} characters
+          </div>
+          <div *ngIf="firstName.errors.pattern">
+            First name can only be Quang!
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- TEXT AREA -->
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea 
+      required
+      ngModel 
+      name="comment" 
+      id="comment" 
+      cols="30" 
+      rows="10" 
+      class="form-control"></textarea>
+  </div>
+
+  <!-- CHECKBOXES -->
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ngModel name="isSubscribed"/> Subscribe to newsletter
+    </label>
+  </div>
+
+  <!-- DROPDOWN -->
+  <div class="form-group">
+    <label for="contactMethod"></label>
+    <select multiple ngModel name="contactMethods" id="contactMethod" class="form-control">
+      <option value=""></option>
+      <!-- Value for regular value -->
+      <option *ngFor="let method of contactMethods" [value]="method.id">{{ method.name }}</option> 
+      <!-- ngValue for value with more complex object -->
+      <!-- <option *ngFor="let method of contactMethods" [ngValue]="method">{{ method.name }}</option>            -->
+    </select>
+  </div>
+
+  <!-- RADIOS -->
+  <div *ngFor="let method of contactMethods" class="radio">
+    <label>
+      <input ngModel type="radio" name="contactMethod" [value]="method.id"/>
+      {{method.name}}
+    </label>
+  </div>
+  <!-- <div class="radio">
+    <label for="">
+      <input ngModel type="radio" name="contactMethod" value="2">
+      Phone
+    </label>
+  </div> -->
+  <p>
+    {{ demoForm.value | json }}
+  </p>
+
+  <!-- Disabled on invalid form group -->
+  <button class="btn btn-primary" [disabled]="!demoForm.valid">Submit</button>
+</form>

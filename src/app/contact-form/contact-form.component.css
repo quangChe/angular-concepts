@@ -1,0 +1,7 @@
+.form-control.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+.alert {
+  margin-top: 5px;
+}

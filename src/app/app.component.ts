@@ -9,7 +9,7 @@ import { IsStarredObject } from './likes/likes.component';
 export class AppComponent {
   // userInput: string;
 
-   
+
   // post = {
   //   title: 'Title',
   //   isStarred: true

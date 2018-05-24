@@ -11,8 +11,8 @@ export class HeartComponent implements OnInit {
   ngOnInit() {
   }
 
-  // heartClicked() {
-  //   this.heartData.liked = !this.heartData.liked;
-  //   this.heartData.count += (this.heartData.liked) ? 1 : -1;
-  // }
+  heartClicked() {
+    // this.heartData.liked = !this.heartData.liked;
+    // this.heartData.count += (this.heartData.liked) ? 1 : -1;
+  }
 }

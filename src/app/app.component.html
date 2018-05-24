@@ -12,7 +12,6 @@
 
 <!--******** Likes Component ****** -->
 <!-- <app-likes [is-liked]="post.isStarred" (change)="onFavoriteChanged($event)"></app-likes> -->
-`
 
 <!--******** Panel Component ****** -->
 <!-- <bootstrap-panel> -->
@@ -108,4 +107,17 @@
 
 
 <!-- ***** Custom Directives [input-format.directive.ts] ***** -->
-<input type="text" appInputFormat/>
+<!-- <input type="text" [appInputFormat]="'lowercase'"/> -->
+
+
+<!-- ***** Zippy Assignment [zippy.component.ts] ***** -->
+<!-- <app-zippy [title]="'Shipping Details'">
+  Shipping Details Content
+</app-zippy>
+<app-zippy title="Billing Details">
+  Billing Details Content
+</app-zippy> -->
+
+
+<!-- ***** Building Forms (Template Driven Approach aka Using Directives) ***** -->
+<app-contact-form></app-contact-form>

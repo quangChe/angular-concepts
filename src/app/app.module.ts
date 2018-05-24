@@ -13,6 +13,8 @@ import { TitlecasePipe } from './titlecase.pipe';
 import { PanelComponent } from './panel/panel.component';
 import { HeartComponent } from './heart/heart.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ZippyComponent } from './zippy/zippy.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   // Where we add all the components that're part of the module
@@ -25,7 +27,9 @@ import { InputFormatDirective } from './input-format.directive';
     TitlecasePipe,
     PanelComponent,
     HeartComponent,
-    InputFormatDirective
+    InputFormatDirective,
+    ZippyComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
