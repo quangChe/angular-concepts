@@ -1,0 +1,62 @@
+<form [formGroup]="signupForm" (ngSubmit)="login()">
+
+  <div class="alert alert-danger" *ngIf="signupForm.errors">
+    Username or password is invalid!
+  </div>
+  
+  <div formGroupName="account">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <div *ngIf="username.dirty && username.invalid" class="alert alert-danger">
+            <div *ngIf="username.errors.required">A username is required for signup.</div> 
+            <div *ngIf="username.errors.minlength">Username must contain at least {{ username.errors.minlength.requiredLength }} characters.</div>     
+            <div *ngIf="username.errors.containsSpace">Username cannot contain any spaces.</div>     
+            <div *ngIf="username.errors.nameTaken">Username cannot be the same as mine.</div>     
+          </div>
+          <div 
+            *ngIf="username.dirty && !username.invalid && !username.pending" 
+            class="alert alert-success">
+            <div *ngIf="!username.errors">Username looks good!</div>
+          </div>
+        <input
+            formControlName="username" 
+            id="username" 
+            type="text" 
+            class="form-control"/>
+        <div class="loading" *ngIf="username.pending">
+          <i class="fas fa-spinner fa-spin"></i> Please wait, checking for uniqueness...
+        </div>
+      </div>
+    
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div *ngIf="password.dirty && password.invalid" class="alert alert-danger">
+          <div *ngIf="password.errors.required">A password is required for signup.</div> 
+          <div *ngIf="password.errors.minlength">Password must contain at least {{ password.errors.minlength.requiredLength }} characters.</div> 
+        </div>
+        <div 
+            *ngIf="password.dirty && !password.invalid && !password.pending" 
+            class="alert alert-success">
+            <div *ngIf="!password.errors">Password looks good!</div>
+          </div>
+        <input 
+            formControlName="password"
+            id="password" 
+            type="password" 
+            class="form-control"/>
+      </div>
+  </div>
+  
+
+  <button class="btn btn-primary" type="submit">Sign Up</button>
+
+</form>
+
+<form>
+  <input type="text" class="form-control" (keyup.enter)="addFriend(newFriend)" #newFriend/>
+  <ul class="list-group">
+    <!-- Reference 'friends.get('names').controls to iterate over FormControl objects 
+    inside of the 'names' FormArray-->
+    <li class="list-group-item" *ngFor="let name of friendNames.controls" (click)="removeFriend(name)">{{ name.value }}</li>
+  </ul>
+</form>

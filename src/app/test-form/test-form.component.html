@@ -7,24 +7,30 @@
       #courseName="ngModel"
       id="courseName"
       type="text" 
-      name="courseName" 
+      name="courseNameBox" 
       class="form-control"/>
+      <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
+          <div *ngIf="!courseName.value">A name is required for the course.</div>  
+      </div>
   </div>
-  <div class="alert alert-danger" *ngIf="courseName.touched && !courseName.valid">
-    <div *ngIf="!courseName.value">A name is required for the course.</div>  
-  </div>
+ 
 
   <div class="form-group">
     <label class="form-label" for="category">Catgory</label>
     <select 
       required 
       ngModel
-      name="category" 
+      #categoryValue="ngModel"
+      name="categoryBox" 
       id="category" 
       class="form-control">
       <option value=""></option>
       <option *ngFor="let c of category" [value]="c.id">{{ c.name }}</option>
     </select>
+
+    <div class="alert alert-danger" *ngIf="categoryValue.touched && !categoryValue.valid">
+        <div *ngIf="!categoryValue.value">Choose a category for the course.</div>  
+    </div>
   </div>
 
   <div class="checkbox">
@@ -32,7 +38,7 @@
       <input 
         ngModel
         type="checkbox" 
-        name="guarantee" 
+        name="guaranteeBox" 
         id="guarantee"/> 30-day Money Back Guarantee
     </label>
   </div>
