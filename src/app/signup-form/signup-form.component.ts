@@ -8,35 +8,35 @@ import { UsernameValidators } from './username.validators';
   styleUrls: ['./signup-form.component.css']
 })
 export class SignupFormComponent {
-  // ****Top-most form group (Parent of subgroup)
-  signupForm = new FormGroup({
-    // ****Subgroup (Parent of username and password)
-    account: new FormGroup({
-      // ****Child form controls
-      'username': new FormControl('',
-      [
-        Validators.required,
-        Validators.minLength(5),
-        UsernameValidators.cannotContainSpace
-      ],
-      [
-        UsernameValidators.shouldBeUnique
-      ]),
-      password: new FormControl('', [Validators.required, Validators.minLength(5)])
-    })
-    // ****Form controls before getting subgroup parent (account)
-    // 'username': new FormControl('',
-    //   [
-    //     Validators.required,
-    //     Validators.minLength(5),
-    //     UsernameValidators.cannotContainSpace
-    //   ],
-    //   [
-    //     UsernameValidators.shouldBeUnique
-    //   ]
-    // ),
-    // password: new FormControl('', [Validators.required, Validators.minLength(5)])
-  });
+  // // ****Top-most form group (Parent of subgroup)
+  // signupForm = new FormGroup({
+  //   // ****Subgroup (Parent of username and password)
+  //   account: new FormGroup({
+  //     // ****Child form controls
+  //     'username': new FormControl('',
+  //     [
+  //       Validators.required,
+  //       Validators.minLength(5),
+  //       UsernameValidators.cannotContainSpace
+  //     ],
+  //     [
+  //       UsernameValidators.shouldBeUnique
+  //     ]),
+  //     password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  //   })
+  //   // ****Form controls before getting subgroup parent (account)
+  //   // 'username': new FormControl('',
+  //   //   [
+  //   //     Validators.required,
+  //   //     Validators.minLength(5),
+  //   //     UsernameValidators.cannotContainSpace
+  //   //   ],
+  //   //   [
+  //   //     UsernameValidators.shouldBeUnique
+  //   //   ]
+  //   // ),
+  //   // password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  // });
 
   // ****ALL ABSTRACT GROUPS (FormGroup, FormArray, FormControl)
   // friends = new FormGroup({
@@ -48,8 +48,11 @@ export class SignupFormComponent {
   //   })
   // });
 
-  // ****Form Builder (Same as above)
+  // ****Form Builder (Same as 'friends' above)
   friends;
+  // ****Form Builder (Same as 'signupForm' above)
+  signupForm2: FormGroup;
+
 
   constructor(fb: FormBuilder) {
     this.friends =  fb.group({ // Form Group
@@ -60,18 +63,34 @@ export class SignupFormComponent {
         phone: [] // Form Control with no validators
       })
     });
+
+    this.signupForm2 = fb.group({
+      account: fb.group({
+        username: ['',
+          [ Validators.required,
+            Validators.minLength(5),
+            UsernameValidators.cannotContainSpace ],
+          [ UsernameValidators.shouldBeUnique ]
+        ],
+        password: ['',
+          [Validators.required, Validators.minLength(5)]
+        ]
+      })
+    });
   }
 
 
   // So we don't have to do "signupForm.get('username')" in our template
   get username() {
     // return this.signupForm.get('username');
-    return this.signupForm.get('account.username');
+    // return this.signupForm.get('account.username');
+    return this.signupForm2.get('account.username');
   }
 
   get password() {
     // return this.signupForm.get('password');
-    return this.signupForm.get('account.password');
+    // return this.signupForm.get('account.password');
+    return this.signupForm2.get('account.password');
   }
 
   // get things() {
@@ -85,10 +104,14 @@ export class SignupFormComponent {
 
   login() {
     // console.log(this.signupForm.controls.username === this.username);
-    this.signupForm.errors = ({
-      loginError: true
-    });
+    // this.signupForm.errors = ({
+    //   loginError: true
+    // });
     // console.log(this.signupForm)
+
+    this.signupForm2.errors = ({
+        loginError: true
+      });
   }
 
   // Type annotation on friend to explicit let others know it's an input HTML element

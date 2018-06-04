@@ -1,6 +1,9 @@
-<form [formGroup]="signupForm" (ngSubmit)="login()">
+<h2>Sign Up Form</h2>
+<br/>
+<!-- <form [formGroup]="signupForm" (ngSubmit)="login()"> -->
+<form [formGroup]="signupForm2" (ngSubmit)="login()">
 
-  <div class="alert alert-danger" *ngIf="signupForm.errors">
+  <div class="alert alert-danger" *ngIf="signupForm2.errors">
     Username or password is invalid!
   </div>
   
@@ -52,6 +55,13 @@
 
 </form>
 
+<br/>
+<br/>
+<br/>
+<br/>
+
+<h2>Friends List</h2>
+<br/>
 <form>
   <input type="text" class="form-control" (keyup.enter)="addFriend(newFriend)" #newFriend/>
   <ul class="list-group">

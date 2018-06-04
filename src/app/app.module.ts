@@ -17,6 +17,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TestFormComponent } from './test-form/test-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   // Where we add all the components that're part of the module
@@ -33,7 +34,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     ZippyComponent,
     ContactFormComponent,
     TestFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
