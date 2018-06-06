@@ -110,8 +110,8 @@ export class SignupFormComponent {
     // console.log(this.signupForm)
 
     this.signupForm2.errors = ({
-        loginError: true
-      });
+      loginError: true
+    });
   }
 
   // Type annotation on friend to explicit let others know it's an input HTML element
