@@ -7,7 +7,7 @@ import { IsStarredObject } from './likes/likes.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // userInput: string;
+  // userInput = 'heyyy';
 
 
   // post = {

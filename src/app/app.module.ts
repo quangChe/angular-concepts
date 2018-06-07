@@ -1,23 +1,34 @@
+// Modules
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
+// Services
+import { CoursesService } from './services/courses.service';
+import { AuthorsService } from './services/authors.service';
+import { PostsService } from './services/posts.service';
+
+// Directives
+import { InputFormatDirective } from './directives/input-format.directive';
+
+// Pipes
+import { SummaryPipe } from './pipes/summary.pipe';
+import { TitlecasePipe } from './pipes/titlecase.pipe';
+
+// Components
 import { AppComponent } from './app.component';
-import { CoursesComponent } from './courses/courses.component';
-import { CoursesService } from './courses.service';
-import { AuthorsComponent } from './authors/authors.component';
-import { AuthorsService } from './authors.service';
-import { SummaryPipe } from './summary.pipe';
-import { LikesComponent } from './likes/likes.component';
-import { TitlecasePipe } from './titlecase.pipe';
-import { PanelComponent } from './panel/panel.component';
-import { HeartComponent } from './heart/heart.component';
-import { InputFormatDirective } from './input-format.directive';
-import { ZippyComponent } from './zippy/zippy.component';
-import { ContactFormComponent } from './contact-form/contact-form.component';
-import { TestFormComponent } from './test-form/test-form.component';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { AuthorsComponent } from './components/authors/authors.component';
+import { LikesComponent } from './components/likes/likes.component';
+import { PanelComponent } from './components/panel/panel.component';
+import { HeartComponent } from './components/heart/heart.component';
+import { ZippyComponent } from './components/zippy/zippy.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { TestFormComponent } from './components/test-form/test-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { PostsComponent } from './components/posts/posts.component';
 
 @NgModule({
   // Where we add all the components that're part of the module
@@ -35,16 +46,21 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ContactFormComponent,
     TestFormComponent,
     SignupFormComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponent
   ],
+  // Where we add all the modules
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
+  // Where we add all the services
   providers: [
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostsService
   ],
   bootstrap: [AppComponent]
 })

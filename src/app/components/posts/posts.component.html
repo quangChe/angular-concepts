@@ -1,0 +1,23 @@
+<ul class="list-group">
+    <input 
+    #title
+    (keyup.enter)="createPost(title)"
+    type="text" 
+    class="form-group">
+  <li class="list-group-item" *ngFor="let post of posts">
+    <h1>{{ post.title.slice(0, 1) | uppercase }}{{ post.title.slice(1) }}</h1>
+    <button 
+      #readBtn
+      class="btn btn-light btn-sm"
+      (click)="updatePost(post, readBtn)">
+      Read
+    </button>
+    <br/>
+    <button 
+      #deleteBtn
+      class="btn btn-danger btn-sm"
+      (click)="deletePost(post, deleteBtn)">
+      Delete
+    </button>
+  </li>
+</ul>
